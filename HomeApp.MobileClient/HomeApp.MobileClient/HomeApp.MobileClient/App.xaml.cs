@@ -10,7 +10,7 @@ namespace HomeApp.MobileClient
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LoadingPage();
         }
 
         protected override void OnStart()
