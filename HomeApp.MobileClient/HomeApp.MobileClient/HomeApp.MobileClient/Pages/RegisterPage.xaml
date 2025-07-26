@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HomeApp.MobileClient.Pages.RegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions">
+
+    <StackLayout
+        x:Name="stackLayout"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Entry
+            FontSize="Title"
+            HorizontalTextAlignment="Center"
+            Placeholder="Your e-mail"
+            VerticalTextAlignment="Center" />
+        <Button
+            x:Name="registerButton"
+            Clicked="Register_Click"
+            Text="Register"
+            CornerRadius="{ext:ButtonViewExtension ButtonStyle=Round}"/>
+        <Label
+            Padding="30,10,30,10"
+            FontSize="Medium"
+            HorizontalTextAlignment="Center"
+            Text="Already have an account"
+            VerticalTextAlignment="Center" />
+    </StackLayout>
+</ContentPage>

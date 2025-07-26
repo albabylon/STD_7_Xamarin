@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HomeApp.MobileClient.Pages.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:HomeApp.MobileClient.Pages" 
+    xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions">
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label
+            Padding="30,10,30,10"
+            FontSize="Title"
+            HorizontalTextAlignment="Center"
+            Text="HomeApp - Ваш умный дом"
+            VerticalTextAlignment="Center" />
+        <Button
+            x:Name="loginButton"
+            Clicked="Login_Click"
+            Text="{x:Static local:LoginPage.BUTTON_TEXT}"
+            CornerRadius="{ext:ButtonViewExtension ButtonStyle=Round}"/>
+        <Label
+            x:Name="errorMessage"
+            Padding="30,10,30,10"
+            FontSize="Small"
+            HorizontalTextAlignment="Center"
+            TextColor="{ext:RgbExtension Red=255, Green=0, Blue=0}"
+            VerticalTextAlignment="Center" />
+    </StackLayout>
+</ContentPage>

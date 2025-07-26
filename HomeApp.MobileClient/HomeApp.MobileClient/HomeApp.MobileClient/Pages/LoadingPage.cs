@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace HomeApp.MobileClient
+namespace HomeApp.MobileClient.Pages
 {
     class LoadingPage : ContentPage
     {
@@ -21,7 +21,7 @@ namespace HomeApp.MobileClient
             header.FadeTo(1, 3000);
 
             // Инициализация свойства Content новым элементом.
-            this.Content = header;
+            Content = header;
         }
     }
 }

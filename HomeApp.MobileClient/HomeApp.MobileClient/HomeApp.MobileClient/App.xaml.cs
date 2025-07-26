@@ -1,6 +1,5 @@
-﻿using System;
+﻿using HomeApp.MobileClient.Pages;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace HomeApp.MobileClient
 {
@@ -10,7 +9,7 @@ namespace HomeApp.MobileClient
         {
             InitializeComponent();
 
-            MainPage = new LoadingPage();
+            MainPage = new RegisterPage(); //new LoginPage(); // new LoadingPage();  new MainPage();
         }
 
         protected override void OnStart()
