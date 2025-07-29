@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:HomeApp.MobileClient.Pages" 
     xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions">
 
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="stackLayout">
         <Label
             Padding="30,10,30,10"
             FontSize="Title"
@@ -19,11 +19,11 @@
             Text="{x:Static local:LoginPage.BUTTON_TEXT}"
             CornerRadius="{ext:ButtonViewExtension ButtonStyle=Round}"/>
         <Label
-            x:Name="errorMessage"
+            x:Name="infoMessage"
             Padding="30,10,30,10"
             FontSize="Small"
             HorizontalTextAlignment="Center"
-            TextColor="{ext:RgbExtension Red=255, Green=0, Blue=0}"
+            TextColor="Red"
             VerticalTextAlignment="Center" />
     </StackLayout>
 </ContentPage>
