@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Android", "Weather\Weather.Android\Weather.Android.csproj", "{9602C0EE-E0C5-45E4-A98D-7541C1433C1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.iOS", "Weather\Weather.iOS\Weather.iOS.csproj", "{FBFE4209-B4EE-4629-AB9F-B4C953384713}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather", "Weather\Weather\Weather.csproj", "{60C23BCE-3C13-4E55-9C4B-91FE4D6C77C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9602C0EE-E0C5-45E4-A98D-7541C1433C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9602C0EE-E0C5-45E4-A98D-7541C1433C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9602C0EE-E0C5-45E4-A98D-7541C1433C1F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9602C0EE-E0C5-45E4-A98D-7541C1433C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9602C0EE-E0C5-45E4-A98D-7541C1433C1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9602C0EE-E0C5-45E4-A98D-7541C1433C1F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FBFE4209-B4EE-4629-AB9F-B4C953384713}.Debug|Any CPU.ActiveCfg = Debug|iPhone
+		{FBFE4209-B4EE-4629-AB9F-B4C953384713}.Debug|Any CPU.Build.0 = Debug|iPhone
+		{FBFE4209-B4EE-4629-AB9F-B4C953384713}.Debug|Any CPU.Deploy.0 = Debug|iPhone
+		{FBFE4209-B4EE-4629-AB9F-B4C953384713}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{FBFE4209-B4EE-4629-AB9F-B4C953384713}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
+		{FBFE4209-B4EE-4629-AB9F-B4C953384713}.Release|Any CPU.Deploy.0 = Release|iPhoneSimulator
+		{60C23BCE-3C13-4E55-9C4B-91FE4D6C77C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C23BCE-3C13-4E55-9C4B-91FE4D6C77C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C23BCE-3C13-4E55-9C4B-91FE4D6C77C5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{60C23BCE-3C13-4E55-9C4B-91FE4D6C77C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C23BCE-3C13-4E55-9C4B-91FE4D6C77C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60C23BCE-3C13-4E55-9C4B-91FE4D6C77C5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98407792-193F-4F1C-8115-A5A58482F63B}
+	EndGlobalSection
+EndGlobal
