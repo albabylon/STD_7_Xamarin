@@ -3,27 +3,30 @@
     x:Class="HomeApp.MobileClient.Pages.RegisterPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions">
+    xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions"
+    BackgroundImageSource="HomeBackground.jpg">
 
     <StackLayout
         x:Name="stackLayout"
         HorizontalOptions="Center"
         VerticalOptions="Center">
         <Entry
+            x:Name="placeHolder"
             FontSize="Title"
             HorizontalTextAlignment="Center"
-            Placeholder="Your e-mail"
+            Placeholder="Type your e-mail.."
+            PlaceholderColor="SkyBlue"
             VerticalTextAlignment="Center" />
         <Button
-            x:Name="registerButton"
-            Clicked="Register_Click"
-            CornerRadius="{ext:ButtonViewExtension ButtonStyle=Round}"
+            x:Name="loginButton"
+            Opacity="0.8"
             Text="Register" />
         <Label
             Padding="30,10,30,10"
-            FontSize="Medium"
+            FontSize="Subtitle"
             HorizontalTextAlignment="Center"
             Text="Already have an account"
+            TextColor="LightBlue"
             VerticalTextAlignment="Center" />
     </StackLayout>
 </ContentPage>
