@@ -9,7 +9,7 @@ namespace Weather
         {
             InitializeComponent();
             
-            MainPage = new MainPage();
+            MainPage = new AlarmPage();
         }
 
         protected override void OnStart()

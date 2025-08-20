@@ -10,7 +10,12 @@ namespace Weather.Pages
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void LoadWeatherClicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SetAlarmClicked(object sender, EventArgs e)
         {
 
         }

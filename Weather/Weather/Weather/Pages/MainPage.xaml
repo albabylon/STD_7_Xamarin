@@ -11,7 +11,9 @@
         <Label
             FontSize="Title"
             HorizontalOptions="Center"
-            Text="Добро пожаловать в приложение Погода!" />
-        <Button Text="Посмотреть погоду" Clicked="Button_Clicked"/>
+            Text="Добро пожаловать в приложение Погода!" 
+            HorizontalTextAlignment="Center"/>
+        <Button Text="Посмотреть погоду" Clicked="LoadWeatherClicked"/>
+        <Button Text="Установить будильник" Clicked="SetAlarmClicked"/>
     </StackLayout>
 </ContentPage>
