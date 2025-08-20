@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HomeApp.MobileClient.Pages.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+        <Label
+            Padding="30,10,30,10"
+            FontSize="Title"
+            HorizontalOptions="Center"
+            Text="HomeApp - доступ" />
+        <TableView>
+            <TableView.Root>
+                <TableRoot>
+                    <TableSection Title="Данные пользователя">
+                        <EntryCell
+                            x:Name="loginEntry"
+                            Keyboard="Default"
+                            Label="Имя"
+                            Text="Андрей" />
+                        <EntryCell
+                            x:Name="emailEntry"
+                            Keyboard="Default"
+                            Label="E-mail"
+                            Text="andrew@homeapp.com" />
+                    </TableSection>
+                    <TableSection Title="Настройки доступа">
+                        <SwitchCell
+                            x:Name="gasSwitch"
+                            OnChanged="NotifyUser"
+                            OnColor="RoyalBlue"
+                            Text="Управление газом" />
+                        <SwitchCell
+                            x:Name="climateSwitch"
+                            OnChanged="NotifyUser"
+                            OnColor="RoyalBlue"
+                            Text="Управление климатом" />
+                        <SwitchCell
+                            x:Name="electroSwitch"
+                            OnChanged="NotifyUser"
+                            OnColor="RoyalBlue"
+                            Text="Электропитание" />
+                    </TableSection>
+                </TableRoot>
+            </TableView.Root>
+        </TableView>
+        <Button
+            x:Name="saveButton"
+            Margin="10,10,10,10"
+            Text="Сохранить" />
+    </StackLayout>
+</ContentPage>

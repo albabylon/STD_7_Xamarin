@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HomeApp.MobileClient.Pages.DeviceControlPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout
+        x:Name="stackLayout"
+        Padding="30,10"
+        BackgroundColor="LightGray">
+        <Label
+            Padding="30,10,30,10"
+            FontSize="Title"
+            HorizontalOptions="Center"
+            Text="Панель управления" />
+    </StackLayout>
+</ContentPage>
