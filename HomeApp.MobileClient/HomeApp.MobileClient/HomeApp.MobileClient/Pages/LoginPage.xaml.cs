@@ -20,6 +20,11 @@ namespace HomeApp.MobileClient.Pages
         public LoginPage()
         {
             InitializeComponent();
+
+            // Кастомизация под разные платформы
+            // Изменяем внешний вид кнопки для Windows-версии
+            if (Device.RuntimePlatform == Device.UWP)
+                loginButton.CornerRadius = 0;
         }
 
         /// <summary>
