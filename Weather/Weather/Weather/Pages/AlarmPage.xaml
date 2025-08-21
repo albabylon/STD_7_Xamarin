@@ -13,10 +13,18 @@
 
         <StackLayout Margin="10">
             <Label Text="Дата" />
-            <DatePicker x:Name="datePicker" Format="dd/MM/yyy" />
+            <DatePicker
+                x:Name="datePicker"
+                Format="D"
+                PropertyChanged="DatePickerChanged"
+                Style="{StaticResource Key=ValidationDateStyle}" />
 
             <Label Text="Время" />
-            <TimePicker x:Name="timePicker" Format="00:00:00" />
+            <TimePicker
+                x:Name="timePicker"
+                Time="17:00:00"
+                PropertyChanged="TimePickerChanged"
+                Style="{StaticResource Key=ValidationTimeStyle}" />
 
             <Label x:Name="headerVolume" Text="Громкость" />
             <Slider
@@ -29,9 +37,19 @@
                 ValueChanged="SliderVolumeChanged" />
 
             <Label Text="Повторять каждый день" />
-            <Switch x:Name="repeateSwitch" ThumbColor="RoyalBlue" HorizontalOptions="Start"/>
+            <Switch
+                x:Name="repeateSwitch"
+                HorizontalOptions="Start"
+                ThumbColor="RoyalBlue" />
         </StackLayout>
-
+        
+        <Label
+            x:Name="resultMessage"
+            Padding="0,20,0,0"
+            FontSize="Medium"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center" />
+        
         <Button
             Clicked="SaveClicked"
             Text="Сохранить"
