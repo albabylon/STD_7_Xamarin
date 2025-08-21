@@ -17,6 +17,9 @@ namespace HomeApp.MobileClient.Pages
         // Переменная счетчика
         public static int loginCounter = 0;
 
+        // Создаем объект, возвращающий свойства устройства
+        IDeviceDetector detector = DependencyService.Get<IDeviceDetector>();
+
         public LoginPage()
         {
             InitializeComponent();
@@ -25,6 +28,16 @@ namespace HomeApp.MobileClient.Pages
             // Изменяем внешний вид кнопки для Windows-версии
             if (Device.RuntimePlatform == Device.UWP)
                 loginButton.CornerRadius = 0;
+
+            // Изменяем внешний вид кнопки для Desktop-версии
+            if (Device.Idiom == TargetIdiom.Desktop)
+                loginButton.CornerRadius = 0;
+
+            // Передаем информацию о платформе на экран
+            runningDevice.Text = detector.GetDevice();
+
+            // Устанавливаем динамический ресурс с помощью специально метода
+            infoMessage.SetDynamicResource(Label.TextColorProperty, "errorColor");
         }
 
         /// <summary>
@@ -40,14 +53,20 @@ namespace HomeApp.MobileClient.Pages
             {
                 loginButton.IsEnabled = false;
 
-                // Получаем последний дочерний элемент, используя свойство Children, затем выполняем распаковку
+                // Обновляем динамический ресурс по необходимости
+                Resources["errorColor"] = Color.FromHex("#e70d4f");
+
                 var infoMessage = (Label)stackLayout.Children.Last();
-                // Задаем текст элемента
                 infoMessage.Text = "Слишком много попыток! Попробуйте позже";
 
+                // Используем добавленный глобальный ресурс
+                //infoMessage.TextColor = (Color)Application.Current.Resources["errorColor"];
             }
             else
             {
+                // Обновляем динамический ресурс по необходимости
+                Resources["errorColor"] = Color.FromHex("#ff8e00");
+
                 loginButton.Text = $"Выполняется вход...   Попыток входа: {loginCounter}";
             }
 

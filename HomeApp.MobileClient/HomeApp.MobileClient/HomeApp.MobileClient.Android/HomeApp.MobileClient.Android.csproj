@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomEntryRenderer.cs" />
+    <Compile Include="DeviceDetector.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="CustomEditorRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
