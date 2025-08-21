@@ -3,10 +3,13 @@
     x:Class="HomeApp.MobileClient.Pages.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:HomeApp.MobileClient.Pages" 
-    xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions">
+    xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions"
+    xmlns:local="clr-namespace:HomeApp.MobileClient.Pages">
 
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="stackLayout">
+    <StackLayout
+        x:Name="stackLayout"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
         <Label
             Padding="30,10,30,10"
             FontSize="Title"
@@ -16,14 +19,21 @@
         <Button
             x:Name="loginButton"
             Clicked="Login_Click"
-            Text="{x:Static local:LoginPage.BUTTON_TEXT}"
-            CornerRadius="{ext:ButtonViewExtension ButtonStyle=Round}"/>
+            CornerRadius="{ext:ButtonViewExtension ButtonStyle=Round}"
+            Text="{x:Static local:LoginPage.BUTTON_TEXT}" 
+            Style="{StaticResource buttonStyle}"/>
         <Label
             x:Name="infoMessage"
             Padding="30,10,30,10"
-            FontSize="Small"
+            FontSize="{DynamicResource Key=errorFont}"
             HorizontalTextAlignment="Center"
-            TextColor="Red"
+            TextColor="{DynamicResource Key=errorColor}"
+            VerticalTextAlignment="Center" />
+        <Label
+            x:Name="runningDevice"
+            Padding="30,10,30,10"
+            FontSize="15"
+            HorizontalTextAlignment="Center"
             VerticalTextAlignment="Center" />
     </StackLayout>
 </ContentPage>
