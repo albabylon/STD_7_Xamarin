@@ -9,7 +9,8 @@ namespace HomeApp.MobileClient
         {
             InitializeComponent();
 
-            MainPage = new DeviceListPage(); //new ClimatePage(); //new LoginPage(); //new RegisterPage();  // new LoadingPage();  new MainPage();
+            // Инициализация главного экрана и стека навигации
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

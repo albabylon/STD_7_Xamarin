@@ -2,7 +2,8 @@
 <ContentPage
     x:Class="HomeApp.MobileClient.Pages.DeviceListPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False">
 
     <StackLayout>
         <Label
@@ -13,13 +14,14 @@
             Text="HomeApp - Ваши устройства" />
         <ListView
             x:Name="deviceList"
+            CachingStrategy="RecycleElement"
             GroupDisplayBinding="{Binding Name}"
             HasUnevenRows="True"
             IsGroupingEnabled="True"
+            ItemSelected="deviceList_ItemSelected"
             ItemsSource="{Binding DeviceGroups}"
             RowHeight="60"
-            SeparatorVisibility="Default"
-            CachingStrategy="RecycleElement">
+            SeparatorVisibility="Default">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
@@ -29,15 +31,35 @@
                         TextColor="DodgerBlue" />
                 </DataTemplate>
             </ListView.ItemTemplate>
-
         </ListView>
+        <Grid
+            Margin="10,15"
+            ColumnDefinitions="Auto"
+            RowDefinitions="45">
+            <Button
+                Grid.Column="0"
+                Clicked="NewDeviceButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="Новое устройство" />
+            <Button
+                Grid.Column="1"
+                Clicked="EditDeviceButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="Изменить" />
+            <Button
+                Grid.Column="2"
+                Clicked="LogoutButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="Выход" />
+        </Grid>
     </StackLayout>
 </ContentPage>
 
-<!--ListView и производительность-->
-<!--Xamarin.Forms предоставляет для ListView различные конфигурации кеширования, описываемые ListViewCachingStrategy. 
-    Поддерживается установка RetainElement (стоит по умолчанию, предполагает создание ячейки для каждого элемента в списке) 
-    или RecycleElement (переиспользование одних и тех же ячеек элементов). 
+<!--  ListView и производительность  -->
+<!--
+    Xamarin.Forms предоставляет для ListView различные конфигурации кеширования, описываемые ListViewCachingStrategy.
+    Поддерживается установка RetainElement (стоит по умолчанию, предполагает создание ячейки для каждого элемента в списке)
+    или RecycleElement (переиспользование одних и тех же ячеек элементов).
     
     Когда использовать RetainElement?
     Если каждая ячейка ListView имеет много привязок. Например, более 20.

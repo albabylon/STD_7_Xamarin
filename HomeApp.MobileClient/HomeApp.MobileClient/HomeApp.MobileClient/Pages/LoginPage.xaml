@@ -4,7 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions"
-    xmlns:local="clr-namespace:HomeApp.MobileClient.Pages">
+    xmlns:local="clr-namespace:HomeApp.MobileClient.Pages"
+    NavigationPage.HasNavigationBar="False">
 
     <StackLayout
         x:Name="stackLayout"
@@ -18,7 +19,7 @@
             VerticalTextAlignment="Center" />
         <Button
             x:Name="loginButton"
-            Clicked="Login_Click"
+            Clicked="Login_ClickAsync"
             CornerRadius="{ext:ButtonViewExtension ButtonStyle=Round}"
             Text="{x:Static local:LoginPage.BUTTON_TEXT}" 
             Style="{StaticResource buttonStyle}"/>
