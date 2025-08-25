@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HomeApp.MobileClient.Pages.BindingModePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--  Общий стиль для слайдеров на странице  -->
+            <Style TargetType="Slider">
+                <Setter Property="MinimumTrackColor" Value="DodgerBlue" />
+                <Setter Property="MaximumTrackColor" Value="Gray" />
+                <Setter Property="ThumbColor" Value="DodgerBlue" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--  Привязка наоборот сделана нежели в BindingPage  -->
+        <Label
+            x:Name="label"
+            FontSize="80"
+            HorizontalOptions="Center"
+            Text="H"
+            VerticalOptions="CenterAndExpand" />
+
+        <!--  Масштаб  -->
+        <Slider
+            x:Name="scaleSlider"
+            Grid.Row="1"
+            Grid.Column="0"
+            BindingContext="{x:Reference label}"
+            Maximum="10"
+            Value="{Binding Scale, Mode=TwoWay}" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            BindingContext="{x:Reference scaleSlider}"
+            Text="{Binding Value, StringFormat='Scale x {0:F1}    '}"
+            VerticalTextAlignment="Center" />
+
+        <!--  Поворот  -->
+        <Slider
+            x:Name="rotationSlider"
+            Grid.Row="2"
+            Grid.Column="0"
+            BindingContext="{x:Reference label}"
+            Maximum="360"
+            Value="{Binding Rotation, Mode=OneWayToSource}" />
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            BindingContext="{x:Reference rotationSlider}"
+            Text="{Binding Value, StringFormat='Spin {0:F0}'}"
+            VerticalTextAlignment="Center" />
+
+        <!--  Вращение по оси X  -->
+        <Slider
+            x:Name="rotationXSlider"
+            Grid.Row="3"
+            Grid.Column="0"
+            BindingContext="{x:Reference label}"
+            Maximum="360"
+            Value="{Binding RotationX, Mode=OneWayToSource}" />
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            BindingContext="{x:Reference rotationXSlider}"
+            Text="{Binding Value, StringFormat='X = {0:F0}'}"
+            VerticalTextAlignment="Center" />
+
+        <!--  Вращение по оси Y  -->
+        <Slider
+            x:Name="rotationYSlider"
+            Grid.Row="4"
+            Grid.Column="0"
+            BindingContext="{x:Reference label}"
+            Maximum="360"
+            Value="{Binding RotationY, Mode=OneWayToSource}" />
+
+        <Label
+            Grid.Row="4"
+            Grid.Column="1"
+            BindingContext="{x:Reference rotationYSlider}"
+            Text="{Binding Value, StringFormat='Y = {0:F0}'}"
+            VerticalTextAlignment="Center" />
+    </Grid>
+</ContentPage>
+
+<!--Привязка трёх Slider-ов у нас идёт в режиме OneWayToSource, поэтому изменение значения слайдера вызывает изменение в свойствах его BindingContext, 
+    то есть непосредственно в Label. И, соответственно, воздействия на слайдеры изменяют соответствующие свойства у Label-->
+    
+<!-- Однако привязка слайдера для свойства Scale у нас происходит в режиме TwoWay. 
+    Это мы делаем не просто так — всё дело в том, что свойство Scale по умолчанию имеет значение 1, 
+    и именно использование привязки в режиме TwoWay позволяет 
+    при запуске установить значение по умолчанию 1 вместо нуля. Если бы мы использовали режим OneWayToSource, 
+    то свойство Scale по умолчанию получило бы значение 0, что привело бы к исчезновению элемента с экрана.-->

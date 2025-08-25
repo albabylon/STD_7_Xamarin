@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <ContentPage.Resources>
-        <StyleSheet Source="/Static/DevicesPage.css" />
+        <StyleSheet Source="/Static/DevicePage.css" />
     </ContentPage.Resources>
 
     <StackLayout BackgroundColor="LightGray">
