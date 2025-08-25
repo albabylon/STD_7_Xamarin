@@ -6,7 +6,7 @@
     xmlns:ext="clr-namespace:HomeApp.MobileClient.Extensions"
     xmlns:local="clr-namespace:HomeApp.MobileClient.Pages"
     BackgroundImageSource="HomeBackground.jpg">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="entryStyle" TargetType="Entry">
@@ -18,7 +18,7 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <StackLayout
         x:Name="stackLayout"
         HorizontalOptions="Center"
@@ -33,8 +33,8 @@
         <Button
             x:Name="loginButton"
             Opacity="0.8"
-            Text="Register"
-            Style="{StaticResource buttonStyle}"/>
+            Style="{StaticResource buttonStyle}"
+            Text="Register" />
         <Label
             Padding="30,10,30,10"
             FontSize="Subtitle"

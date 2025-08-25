@@ -3,7 +3,7 @@
     x:Class="HomeApp.MobileClient.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    
+
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="errorColor">#FF0000</Color>
@@ -24,12 +24,12 @@
                 </Setter>
                 <Setter Property="TextColor" Value="{StaticResource Key=errorColor}" />
                 <Style.Triggers>
-                    <Trigger Property="IsPressed" Value="True" TargetType="Button">
+                    <Trigger TargetType="Button" Property="IsPressed" Value="True">
                         <Setter Property="TextColor" Value="LightBlue" />
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <Style TargetType="Entry" x:Key="ValidInputStyle">
+            <Style x:Key="ValidInputStyle" TargetType="Entry">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="ValidStates">
