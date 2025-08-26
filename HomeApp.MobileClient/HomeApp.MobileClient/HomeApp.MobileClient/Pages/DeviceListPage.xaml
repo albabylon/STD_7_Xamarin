@@ -33,24 +33,34 @@
             </ListView.ItemTemplate>
         </ListView>
         <Grid
-            Margin="10,15"
+            Margin="5,10"
             ColumnDefinitions="Auto"
             RowDefinitions="45">
             <Button
                 Grid.Column="0"
-                Clicked="NewDeviceButton_Clicked"
+                Clicked="UserProfileButton_Clicked"
                 HorizontalOptions="FillAndExpand"
-                Text="Новое устройство" />
+                Text="Profile" />
             <Button
                 Grid.Column="1"
-                Clicked="EditDeviceButton_Clicked"
+                Clicked="NewDeviceButton_Clicked"
                 HorizontalOptions="FillAndExpand"
-                Text="Изменить" />
+                Text="New" />
             <Button
                 Grid.Column="2"
+                Clicked="EditDeviceButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="✏️" />
+            <Button
+                Grid.Column="3"
+                Clicked="DeleteButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="❌" />
+            <Button
+                Grid.Column="4"
                 Clicked="LogoutButton_Clicked"
                 HorizontalOptions="FillAndExpand"
-                Text="Выход" />
+                Text="Exit" />
         </Grid>
     </StackLayout>
 </ContentPage>

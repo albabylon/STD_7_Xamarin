@@ -2,28 +2,22 @@
 <ContentPage
     x:Class="HomeApp.MobileClient.Pages.ProfilePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Ваш профиль">
 
     <StackLayout>
-        <Label
-            Padding="30,10,30,10"
-            FontSize="Title"
-            HorizontalOptions="Center"
-            Text="HomeApp - доступ" />
-        <TableView>
+        <TableView x:Name="userDataTable">
             <TableView.Root>
                 <TableRoot>
                     <TableSection Title="Данные пользователя">
                         <EntryCell
                             x:Name="loginEntry"
                             Keyboard="Default"
-                            Label="Имя"
-                            Text="Андрей" />
+                            Label="Имя" />
                         <EntryCell
                             x:Name="emailEntry"
                             Keyboard="Default"
-                            Label="E-mail"
-                            Text="andrew@homeapp.com" />
+                            Label="E-mail" />
                     </TableSection>
                     <TableSection Title="Настройки доступа">
                         <SwitchCell
@@ -48,6 +42,7 @@
         <Button
             x:Name="saveButton"
             Margin="10,10,10,10"
+            Clicked="saveButton_Clicked"
             Text="Сохранить" />
     </StackLayout>
 </ContentPage>

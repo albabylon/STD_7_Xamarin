@@ -29,20 +29,23 @@ namespace HomeApp.MobileClient.Pages
         public DeviceListPage()
         {
             InitializeComponent();
+        }
 
-            // Первоначальные данные сохраним в обычном листе
-            var initialList = new List<HomeDevice>();
-            initialList.Add(new HomeDevice("Чайник", "Chainik.png", "LG, объем 2л.", "Кухня"));
-            initialList.Add(new HomeDevice("Стиральная машина", "StiralnayaMashina.png", description: "BOSCH", "Ванная"));
-            initialList.Add(new HomeDevice("Посудомоечная машина", "PosudomoechnayaMashina.png", "Gorenje", "Кухня"));
-            initialList.Add(new HomeDevice("Мультиварка", "Multivarka.png", "Philips", "Кухня"));
+        protected async override void OnAppearing()
+        {
+            // Загрузка данных из базы
+            var devicesFromDb = await App.HomeDevices.GetHomeDevices();
+            // Мапим сущности БД в сущности бизнес-логики
+            var deviceList = App.Mapper.Map<Models.HomeDevice[]>(devicesFromDb);
 
             // Сгруппируем по комнатам
-            var devicesByRooms = initialList.GroupBy(d => d.Room).Select(g => new Group<string, HomeDevice>(g.Key, g));
+            var devicesByRooms = deviceList.GroupBy(d => d.Room).Select(g => new Group<string, HomeDevice>(g.Key, g));
 
             // Сохраним
             DeviceGroups = new ObservableCollection<Group<string, HomeDevice>>(devicesByRooms);
             BindingContext = this;
+
+            base.OnAppearing();
         }
 
         private async void LogoutButton_Clicked(object sender, EventArgs e)
@@ -54,7 +57,7 @@ namespace HomeApp.MobileClient.Pages
         private async void NewDeviceButton_Clicked(object sender, EventArgs e)
         {
             // Переход на следующую страницу - страницу нового устройства (и помещение её в стек навигации)
-            await Navigation.PushAsync(new NewDevicePage());
+            await Navigation.PushAsync(new DevicePage("Новое устройство"));
         }
 
         private async void EditDeviceButton_Clicked(object sender, EventArgs e)
@@ -68,6 +71,24 @@ namespace HomeApp.MobileClient.Pages
 
             // Переход на следующую страницу - страницу нового устройства (и помещение её в стек навигации)
             await Navigation.PushAsync(new DevicePage("Изменить устройство", SelectedDevice));
+        }
+        
+        private async void UserProfileButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            // Получаем сущность базы данных, которую следует удалить (мапим из внутренней сущности, представляющей выбранное устройство)
+            var deviceToDelete = App.Mapper.Map<Data.Tables.HomeDevice>(SelectedDevice);
+            // Удаляем сущность из бд
+            await App.HomeDevices.DeleteHomeDevice(deviceToDelete);
+
+            // Обновляем интерфейс
+            var grp = DeviceGroups.FirstOrDefault(g => g.Name == SelectedDevice.Room);
+            var deviceToRemove = grp.FirstOrDefault(d => d.Id == deviceToDelete.Id);
+            grp.Remove(deviceToRemove);
         }
 
         /// <summary>
@@ -89,6 +110,8 @@ namespace HomeApp.MobileClient.Pages
             // распаковка модели из объекта
             SelectedDevice = (HomeDevice)e.SelectedItem;
         }
+
+
 
         /// <summary>
         /// Обработчик добавления нового устройства
