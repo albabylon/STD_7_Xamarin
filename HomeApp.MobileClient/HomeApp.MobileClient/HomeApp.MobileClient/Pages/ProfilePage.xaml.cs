@@ -26,10 +26,17 @@ namespace HomeApp.MobileClient.Pages
         /// <summary>
         /// Вызывается до того, как элемент становится видимым
         /// </summary>
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             //Хранение через Properties
             // App.Current.Properties - хранит информацию в приложении (сохр. при перезапуске)
+
+            // Проверяем доступность сетевого соединения
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                // При наличии - запрашиваем данные с сервера
+                await GetHouseInfo();
+            }
 
             // Проверяем, есть ли в словаре значение
             if (App.Current.Properties.TryGetValue("CurrentUser", out object user))
@@ -76,6 +83,24 @@ namespace HomeApp.MobileClient.Pages
 
             // Возврат на предыдущую страницу
             await Navigation.PopAsync();
+        }
+
+        /// <summary>
+        /// Загружает информацию о строении
+        /// </summary>
+        private async Task GetHouseInfo()
+        {
+            // Получим информацию с помощью клиента
+            var inforResponse = await App.ApiClient.GetInfo();
+            // Маппинг внешней модели данных во внутреннюю   
+            var houseInfo = App.Mapper.Map<HouseInfo>(inforResponse);
+
+            // Проставляем нужные значения, полученные с сервера
+            addressEntry.Text = $" {houseInfo.AddressInfo.Street} {houseInfo.AddressInfo.House}/{houseInfo.AddressInfo.Building}";
+            telephoneEntry.Text = $" {houseInfo.Telephone}";
+            areaEntry.Text = $" {houseInfo.Area} кв. м.";
+            voltageEntry.Text = $" {houseInfo.CurrentVolts} в";
+            heatingEntry.Text = $" {houseInfo.Heating}";
         }
     }
 }

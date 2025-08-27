@@ -19,6 +19,28 @@
                             Keyboard="Default"
                             Label="E-mail" />
                     </TableSection>
+                    <TableSection x:Name="serverLoadedInfo" Title="Информация об объекте">
+                        <EntryCell
+                            x:Name="addressEntry"
+                            Keyboard="Default"
+                            Label="Адрес" />
+                        <EntryCell
+                            x:Name="telephoneEntry"
+                            Keyboard="Default"
+                            Label="Телефон" />
+                        <EntryCell
+                            x:Name="areaEntry"
+                            Keyboard="Default"
+                            Label="Площадь" />
+                        <EntryCell
+                            x:Name="voltageEntry"
+                            Keyboard="Default"
+                            Label="Напряжение сети" />
+                        <EntryCell
+                            x:Name="heatingEntry"
+                            Keyboard="Default"
+                            Label="Тип отопления" />
+                    </TableSection>
                     <TableSection Title="Настройки доступа">
                         <SwitchCell
                             x:Name="gasSwitch"
