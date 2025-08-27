@@ -37,12 +37,7 @@ namespace HomeApp.MobileClient
             {
                 cfg.CreateMap<Data.Tables.HomeDevice, Models.HomeDevice>();
                 cfg.CreateMap<Models.HomeDevice, Data.Tables.HomeDevice>();
-            },
-            LoggerFactory.Create(builder =>
-            {
-                builder.AddConsole();
-                builder.SetMinimumLevel(LogLevel.Debug);
-            }));
+            });
 
             return config.CreateMapper();
         }
