@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HomeApp.MobileClient.Pages.BindingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+        <Label
+            BindingContext="{x:Reference Name=slider}"
+            FontSize="270"
+            HorizontalOptions="Center"
+            Rotation="{Binding Path=Value}"
+            Text="H"
+            VerticalOptions="CenterAndExpand" />
+
+        <Slider
+            x:Name="slider"
+            Maximum="360"
+            MaximumTrackColor="Gray"
+            MinimumTrackColor="DodgerBlue"
+            ThumbColor="DodgerBlue"
+            VerticalOptions="CenterAndExpand" />
+
+        <Label
+            BindingContext="{x:Reference slider}"
+            FontAttributes="Bold"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            Text="{Binding Value, StringFormat='Повторот на {0:F0} градусов'}"
+            VerticalOptions="CenterAndExpand" />
+    </StackLayout>
+</ContentPage>

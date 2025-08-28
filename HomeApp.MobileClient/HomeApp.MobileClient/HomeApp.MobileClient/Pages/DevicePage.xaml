@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="HomeApp.MobileClient.Pages.NewDevicePage"
+    x:Class="HomeApp.MobileClient.Pages.DevicePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Новое устройство">
+    xmlns:local="clr-namespace:HomeApp.MobileClient.Pages"
+    Title="{x:Static local:DevicePage.PageName}">
 
     <StackLayout
         x:Name="stackLayout"

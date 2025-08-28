@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HomeApp.MobileClient.Pages.DeviceListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False">
+
+    <StackLayout>
+        <Label
+            Padding="30,10,30,10"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            StyleId="header"
+            Text="HomeApp - Ваши устройства" />
+        <ListView
+            x:Name="deviceList"
+            CachingStrategy="RecycleElement"
+            GroupDisplayBinding="{Binding Name}"
+            HasUnevenRows="True"
+            IsGroupingEnabled="True"
+            ItemSelected="deviceList_ItemSelected"
+            ItemsSource="{Binding DeviceGroups}"
+            RowHeight="60"
+            SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Detail="{Binding Description}"
+                        DetailColor="Gray"
+                        Text="{Binding Name}"
+                        TextColor="DodgerBlue" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid
+            Margin="5,10"
+            ColumnDefinitions="Auto"
+            RowDefinitions="45">
+            <Button
+                Grid.Column="0"
+                Clicked="UserProfileButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="Profile" />
+            <Button
+                Grid.Column="1"
+                Clicked="NewDeviceButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="New" />
+            <Button
+                Grid.Column="2"
+                Clicked="EditDeviceButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="✏️" />
+            <Button
+                Grid.Column="3"
+                Clicked="DeleteButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="❌" />
+            <Button
+                Grid.Column="4"
+                Clicked="LogoutButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="Exit" />
+        </Grid>
+    </StackLayout>
+</ContentPage>
+
+<!--  ListView и производительность  -->
+<!--
+    Xamarin.Forms предоставляет для ListView различные конфигурации кеширования, описываемые ListViewCachingStrategy.
+    Поддерживается установка RetainElement (стоит по умолчанию, предполагает создание ячейки для каждого элемента в списке)
+    или RecycleElement (переиспользование одних и тех же ячеек элементов).
+    
+    Когда использовать RetainElement?
+    Если каждая ячейка ListView имеет много привязок. Например, более 20.
+    Если нам надо часто менять шаблон ячейки.
+    
+    Когда использовать ReсycleElement?
+    Если количество привязок ячейки невелико.
+    Все данные ячейки определяются свойством BindingContext.
+    Все ячейки ListView в целом аналогичны, и их шаблон неизменен.
+    
+    
+    → Где это возможно, используйте встроенные ячейки TextCell и ImageCell вместо кастомной ViewCell.
+    → Не комбинируйте ListView и ScrollView, так как прокрутка нативно поддерживается ListView.
+    → Избегайте большой вложенности элементов.
+    → Наименьшие затраты ресурсов обеспечивает установка LayoutOptions.Fill.
+-->
+
+<!--
+<ListView
+    x:Name="deviceList"
+    HasUnevenRows="True"
+    ItemSelected="deviceList_ItemSelected"
+    ItemsSource="{Binding Devices}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <ViewCell.View>
+                    <StackLayout>
+                        <Label
+                            Padding="10,5,10,5"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="{Binding Name}" />
+                        <Label Padding="10,5,0,0" Text="{Binding Description}" />
+                    </StackLayout>
+                </ViewCell.View>
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>-->
+<!--
+<ListView
+    x:Name="deviceList"
+    HasUnevenRows="True"
+    ItemSelected="deviceList_ItemSelected"
+    ItemsSource="{Binding Devices}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <TextCell
+                Detail="{Binding Description}"
+                DetailColor="Gray"
+                Text="{Binding Name}"
+                TextColor="Black" />
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>-->
+
+<!--
+<StackLayout>
+    <Label
+            Padding="30,10,30,10"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            StyleId="header"
+            Text="HomeApp - Ваши устройства" />
+    <ListView
+            x:Name="deviceList"
+            HasUnevenRows="True"
+            ItemsSource="{Binding Devices}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell
+                        Detail="{Binding Description}"
+                        DetailColor="Gray"
+                        Text="{Binding Name}"
+                        TextColor="DodgerBlue" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout
+            Padding="30,10,30,15"
+            HorizontalOptions="StartAndExpand"
+            Orientation="Horizontal">
+        <Button Clicked="AddDevice" Text="Новое устройство" />
+        <Button Clicked="RemoveDevice" Text="Удалить устройство" />
+    </StackLayout>
+</StackLayout>-->
